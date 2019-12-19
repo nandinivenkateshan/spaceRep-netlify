@@ -1,4 +1,10 @@
 [build]
-base = "front-end/"
-publish = "front-end/dist
+base = "/"
+publish = "front-end/dist"
 command = "npm run"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
