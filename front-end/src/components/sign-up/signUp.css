@@ -1,0 +1,104 @@
+* {
+  margin: 0px;
+}
+.input-tag {
+  border: 1px solid black;
+  padding: 10px 40px 10px 10px;
+  width: 300px;
+  font-size: 15px;
+}
+.signup-btn {
+  grid-column: 2 / 3;
+  margin-top: 20px;
+  justify-self: start;
+  background-color: rgb(20, 20, 90);
+  color: rgb(235, 228, 228);
+  font-weight: bold;
+  padding: 6px;
+  border-radius: 6px;
+  box-shadow: 5px 5px 2px grey;
+}
+.signup-page .heading {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 7px;
+}
+.signup-page .sub-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.signup-box {
+  border: 1px solid grey;
+  width: 60%;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 5px 5px 5px grey;
+}
+.signup-form {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 200px 100px 200px;
+  grid-row-gap: 15px;
+  justify-content: center;
+}
+.signup-form .label {
+  grid-column: 1 / 2;
+}
+.signup-form .inputundefined {
+  grid-column: 2 / 4;
+  padding: 5px;
+  border-radius: 5px;
+  align-self: start;
+  border: 1px solid black;
+}
+.login-btn-nav {
+  text-decoration: none;
+  background-color: rgb(20, 20, 90);
+  color: rgb(235, 228, 228);
+  width: 60px;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 5px 5px 2px rgb(179, 125, 125);
+  text-align: center;
+  margin: auto 40px;
+}
+.signup-btn:hover,
+.login-btn-nav:hover {
+  color: rgb(36, 73, 36);
+  background-color: rgb(134, 134, 184);
+  box-shadow: 5px 5px 2px green;
+}
+.signup-nav .signIn {
+  text-decoration: none;
+  align-self: center;
+  font-weight: bold;
+}
+.signup-form .inputinvalid {
+  border: 1px solid red;
+  grid-column: 2 / 4;
+  padding: 5px;
+  border-radius: 5px;
+  align-self: start;
+}
+.invalid-para {
+  color: red;
+  grid-column: 2 / 4;
+  font-size: 14px;
+}
+
+.reset-pswd {
+  display: block;
+  text-align: center;
+}
+.signup-box .acc-success {
+  text-align: center;
+  font-size: 16px;
+  color: green;
+}
+.signup-box .acc-exist-already {
+  text-align: center;
+  font-size: 16px;
+  color: red;
+}

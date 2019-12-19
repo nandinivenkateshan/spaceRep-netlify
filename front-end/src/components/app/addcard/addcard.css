@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+.field {
+  margin-top: 60px;
+  display: grid;
+  grid-gap: 30px;
+  justify-content: center;
+}
+
+.field .heading {
+  text-align: center;
+  color: red;
+  font-size: 30px;
+  text-shadow: 1px 1px 1px grey;
+}
+
+.input-box {
+  border: 1px solid grey;
+  padding: 10px 40px 10px 10px;
+  width: 300px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px grey;
+}
+.qa-box {
+  padding: 10px 40px 60px 10px;
+  width: 300px;
+  font-size: 15px;
+  resize: none;
+  box-shadow: 2px 2px 2px grey;
+}
+.save-btn {
+  width: 60px;
+  margin: auto;
+  padding: 6px;
+  border-radius: 6px;
+  background-color: rgb(99, 99, 49);
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+.save-btn:active {
+  background-color: rgb(59, 124, 59);
+}
+.isSubmit-para {
+  color: green;
+  text-align: center;
+}
