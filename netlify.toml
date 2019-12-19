@@ -2,3 +2,9 @@
 base = "/"
 publish = "front-end/dist"
 command = "npm run"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
