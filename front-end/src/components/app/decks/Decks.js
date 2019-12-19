@@ -1,8 +1,68 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import NavBar from '../navbar/Navbar'
-import './decks.css'
+import styled from 'styled-components'
 import url from '../../Config'
+
+const Heading = styled.h1`
+color: red;
+font-size: 30px;
+text-shadow: 1px 1px 1px grey;
+margin-bottom: 20px;
+text-align: center;
+margin-left: 30px;
+`
+const Section = styled.section`
+margin: 50px auto;
+width: 400px;
+display: grid;
+`
+const List = styled.li`
+list-style-type: none;
+margin-bottom: 20px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+padding: 10px;
+grid-gap: 100px;
+border-bottom: 1px solid yellow;
+`
+
+const EachDeck = styled.label`
+text-decoration: none;
+cursor: pointer;
+color: rgb(44, 44, 40); 
+text-shadow: 0px 0px 1px red;
+`
+const DropDownElement = styled.div`
+display: flex;
+position: relative;
+color: rgb(44, 44, 40); 
+text-shadow: 0px 0px 1px red;
+padding: 10px;
+&:hover{
+  color: green;
+  cursor: pointer;
+  background-color: rgb(207, 158, 158);
+}
+`
+
+const DropDownContent = styled.div`
+background-color: rgb(219, 189, 189);
+position:absolute;
+display: none;
+z-index: 1;
+box-shadow: 2px 2px 2px grey;
+`
+
+const DropDownBox = styled.div`
+max-width: 70px;
+position: relative;
+justify-self: end;
+&:hover ${DropDownContent} {
+  display: block;
+}
+`
+const DropDownBtn = styled(EachDeck)``
 
 function Decks () {
   const [decks, setDecks] = useState([])
@@ -82,30 +142,30 @@ function Decks () {
   return (
     <main>
       <NavBar />
-      <section className='decks'>
-        <h1 className='decks-heading'>Decks</h1>
+      <Section>
+        <Heading>Decks</Heading>
         <ul>
           {decks.map(item => {
             return (
-              <li key={item.id} className='list'>
-                <label
-                  onClick={(e) => handleTotalDeck(e)} className='deck'
+              <List key={item.id}>
+                <EachDeck
+                  onClick={(e) => handleTotalDeck(e)}
                 >
                   {item.deck.toUpperCase()}
-                </label>
-                <div className='dropdown-box'>
-                  <label className='dropdown-btn'>ACTION</label>
-                  <div className='dropdown-content'>
-                    <label onClick={() => handleRename(item.deck)}>Rename</label>
-                    <label onClick={() => handleDeleteDeck(item.deck)}>Delete</label>
-                  </div>
-                </div>
+                </EachDeck>
+                <DropDownBox>
+                  <DropDownBtn>ACTION</DropDownBtn>
+                  <DropDownContent>
+                    <DropDownElement onClick={() => handleRename(item.deck)}>Rename</DropDownElement>
+                    <DropDownElement onClick={() => handleDeleteDeck(item.deck)}>Delete</DropDownElement>
+                  </DropDownContent>
+                </DropDownBox>
                 {isClick && <Redirect to={`/decks/${path}`} />}
-              </li>
+              </List>
             )
           })}
         </ul>
-      </section>
+      </Section>
     </main>
   )
 }

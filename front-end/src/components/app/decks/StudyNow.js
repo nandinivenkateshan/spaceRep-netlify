@@ -3,6 +3,7 @@ import { useParams, Redirect } from 'react-router-dom'
 import parse from 'html-react-parser'
 import NavBar from '../navbar/Navbar'
 import url from '../../Config'
+import styles from './study.module.css'
 
 const initialState = {
   arr: [],
@@ -55,7 +56,6 @@ function StudyNow () {
       const data = await window.fetch(`${url}/cards/?sid=${sid}`)
       const res = await data.json()
       const res1 = res.filter(item => item.deck === deckName)
-      console.log('dta', res1)
       const res2 = res1.reduce((acc, cv) => {
         if (Number(cv.deckclicktime) >= Number(cv.timestamp)) {
           acc.push(cv)
@@ -63,11 +63,8 @@ function StudyNow () {
         return acc
       }, [])
       const newCards = res2.filter(item => item.status === 'new')
-      console.log('new', newCards)
       const learningCards = res2.filter(item => item.status === 'learning')
-      console.log('learn', learningCards)
       const reviewCards = res2.filter(item => item.status === 'review')
-      console.log('review', reviewCards)
       dispatch({ type: 'setArr', newArr: res2, newCards: newCards, learningCards: learningCards, reviewCards: reviewCards })
     }
     getDataFromDb()
@@ -116,13 +113,11 @@ function StudyNow () {
     const timeToDelay = easy
     const oldStatus = status
     if (oldStatus === 'new') {
-      console.log('new cards')
       status = 'learning'
       easy = 86400 // 1 day
       good = 259200 // 3 days
     }
     if (oldStatus === 'learning') {
-      console.log('learning card')
       status = 'review'
       easy = 172800 // 2 days
       good = 345600 // 4 days
@@ -180,23 +175,23 @@ function StudyNow () {
 
   if (state.showStudy) {
     studyDiv = (
-      <main className='study-box'>
-        <h1 className='heading'>{deckName.toUpperCase()}</h1>
-        <section className='details'>
-          <div className='count'>
+      <main className={styles.studyBox}>
+        <h1 className={styles.heading}>{deckName.toUpperCase()}</h1>
+        <section className={styles.details}>
+          <div className={styles.count}>
             <label>New</label>
             <label>{state.newCards.length}</label>
           </div>
-          <div className='count'>
+          <div className={styles.count}>
             <label>In Learning</label>
             <label>{state.learningCards.length}</label>
           </div>
-          <div className='count'>
+          <div className={styles.count}>
             <label>To Review</label>
             <label>{state.reviewCards.length}</label>
           </div>
         </section>
-        <button onClick={() => handleStudy()} className='study-btn'>Study Now</button>
+        <button onClick={() => handleStudy()} className={styles.studyBtn}>Study Now</button>
       </main>)
   }
 
@@ -211,9 +206,9 @@ function StudyNow () {
           <div className='showQuestion'>
             {parse(state.arr[0].question)}
           </div>
-          <button onClick={() => handleQuestion()} className='study-btn'>Show Answer</button>
+          <button onClick={() => handleQuestion()} className={styles.studyBtn}>Show Answer</button>
         </div>
-        <button className='edit-btn' onClick={() => handleEdit(state.arr[0].id)}>Edit</button>
+        <button className={styles.editBtn} onClick={() => handleEdit(state.arr[0].id)}>Edit</button>
       </section>
     )
   }
@@ -221,32 +216,33 @@ function StudyNow () {
   if (state.showAnswer && state.arr.length) {
     answerDiv = (
       <section>
-        <div className='showAnswer-box'>
-          <div className='showAnswer'>
+        <div className={styles.showAnswerBox}>
+          <div className={styles.showAnswer}>
             {parse(state.arr[0].answer)}
           </div>
-          <div className='timings'>
+          <div className={styles.timings}>
             <label>&lt; {ConvertSec(state.arr[0].again)}</label>
             <label>  {ConvertSec(state.arr[0].easy)}</label>
             <label>{ConvertSec(state.arr[0].good)}</label>
           </div>
-          <div className='answer-btns'>
-            <button onClick={() => handleAgainAnswer(state.arr[0])} className='btn'>Again</button>
-            <button onClick={() => handleEasyAnswer(state.arr[0])} className='btn'>Easy</button>
-            <button onClick={() => handleGoodAnswer(state.arr[0])} className='btn'>Good</button>
+          <div className={styles.answerBtns}>
+            <button onClick={() => handleAgainAnswer(state.arr[0])} className={styles.btn}>Again</button>
+            <button onClick={() => handleEasyAnswer(state.arr[0])} className={styles.btn}>Easy</button>
+            <button onClick={() => handleGoodAnswer(state.arr[0])} className={styles.btn}>Good</button>
           </div>
         </div>
-        <button className='edit-btn' onClick={() => handleEdit(state.arr[0].id)}>Edit</button>
+        <button className={styles.editBtn} onClick={() => handleEdit(state.arr[0].id)}>Edit</button>
       </section>
     )
   }
 
   if (!state.arr.length) {
-    congratsMsg = <p className='congrats-msg'>Congratulations ! You have finished this deck for now</p>
+    congratsMsg = <p className={styles.congratsMsg}>Congratulations ! You have finished this deck for now</p>
   }
 
   return (
-    <main className='main'>
+    <main>
+     { console.log(styles) }
       <NavBar />
       {state.edit &&
         <Redirect to={`/edit/${state.editId}`} />}

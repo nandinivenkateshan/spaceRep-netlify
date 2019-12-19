@@ -1,45 +1,40 @@
 import React, { useState, useEffect } from 'react'
-import './navbar.css'
+import styles from './Navbar.module.css'
 import logo from '../../img/logo.jpeg'
 import { Link } from 'react-router-dom'
 import url from '../../Config'
-import Login from '../../login/Login'
 
 function Navbar () {
-  const [account, setAccount] = useState('')
+  const [account, setIsAccount] = useState('')
   const sid = JSON.parse(window.localStorage.getItem('session'))
   useEffect(() => {
     async function getDataFromDb () {
       let data = await window.fetch(`${url}/account/?sid=${sid}`)
       data = await data.json()
-      if (data.user) setAccount(data.user)
+      if (data.user) setIsAccount(data.user)
     }
     getDataFromDb()
   }, [])
 
   return (
     <>
-      {/*
-      {account && */}
-      <nav className='navbar'>
-        <Link className='navbar-brand' to='/loggedIn'>
-          <label className='logo-text'>SpaceRep</label>
+    {console.log('nav', styles)}
+      <nav className={styles.navbar}>
+        <Link className={styles.navbarBrand} to='/loggedIn'>
+          <label className={styles.logoText}>SpaceRep</label>
           <img src={logo} alt='logo' className='logo' />
         </Link>
 
-        <div className='navbar-menu-start'>
-          <Link className='navbar-item' to='/decks'> Decks</Link>
-          <Link className='navbar-item' to='/add'> Add</Link>
+        <div className={styles.navbarMenuStart}>
+          <Link className={styles.navbarItem} to='/decks'> Decks</Link>
+          <Link className={styles.navbarItem} to='/add'> Add</Link>
         </div>
 
-        <div className='navbar-menu-end'>
-          <Link className='navbar-item' to='/loggedIn'>Account- {account}</Link>
-          <Link className='navbar-item' to='/loggedout'> Log Out</Link>
+        <div className={styles.navbarMenuEnd}>
+          <Link className={styles.navbarItem} to='/loggedIn'>Account- {account}</Link>
+          <Link className={styles.navbarItem} to='/loggedout'> Log Out</Link>
         </div>
       </nav>
-      {/* {!account &&
-        <Login />} */}
-
     </>
   )
 }

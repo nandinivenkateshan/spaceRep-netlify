@@ -12,13 +12,14 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "bulma": "^0.8.0",
-    "heroku": "^7.35.0",
+    "autoprefixer": "^9.7.3",
     "html-react-parser": "^0.10.0",
+    "postcss-modules": "^1.4.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "showdown": "^1.9.1"
+    "showdown": "^1.9.1",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
