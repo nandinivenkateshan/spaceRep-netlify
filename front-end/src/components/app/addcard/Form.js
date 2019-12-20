@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './addcard.css'
 import showdown from 'showdown'
 import url from '../../Config'
-import EnterDeck from './EnterDeck'
-import TextQA from './TextQA'
+import EnterDeckName from './EnterDeckName'
+import EnterQA from './EnterQA'
 import { Redirect } from 'react-router-dom'
 
 function Form (props) {
@@ -44,8 +44,7 @@ function Form (props) {
   }
 
   async function addToDb (url, data) {
-    const sessionId = JSON.parse(window.localStorage.getItem('session'))
-    const value = { ...data, sessionId }
+    const value = { ...data, sid }
     await window.fetch(url, {
       method: 'POST',
       body: JSON.stringify(value),
@@ -56,8 +55,7 @@ function Form (props) {
   }
 
   async function updateCard (url, card) {
-    const sessionId = JSON.parse(window.localStorage.getItem('session'))
-    const value = { ...card, sessionId }
+    const value = { ...card, sid }
     const response = await window.fetch(url, {
       method: 'POST',
       body: JSON.stringify(value),
@@ -126,14 +124,14 @@ function Form (props) {
     <form onSubmit={e => handleSubmit(e)}>
       <section className='field'>
         <h1 className='heading'>{heading}</h1>
-        <EnterDeck value={deck} onEnterDeck={(e) => handleDeck(e)} decksOpt={decksOpt} placeholder='Enter the deck' />
-        <TextQA
+        <EnterDeckName value={deck} onEnterDeck={(e) => handleDeck(e)} decksOpt={decksOpt} placeholder='Enter the deck' />
+        <EnterQA
           placeholder='Enter the Question'
           value={question}
           onHandleQustion={e => handleQuestion(e)}
           onHandleQustionBlur={() => handleQuestionBlur()}
         />
-        <TextQA
+        <EnterQA
           placeholder='Enter the Answer'
           value={answer}
           onHandleAnswer={e => handleAnswer(e)}

@@ -102,9 +102,9 @@ const account = async (req, res) => {
 }
 
 const addCard = async (req, res) => {
-  const { deck, question, answer, status, sessionId, again, easy, good } = req.body
+  const { deck, question, answer, status, sid, again, easy, good } = req.body
   try {
-    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sessionId])
+    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sid])
     const result = await pool.query('INSERT INTO cards (deck, question, answer, status,email,again, easy, good) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING id', [deck, question, answer, status, val.rows[0].email, again, easy, good])
     res.send(result.rows)
   } catch (e) {
@@ -128,9 +128,9 @@ const deckNames = async (req, res) => {
 }
 
 const updateDeckClickTime = async (req, res) => {
-  const { deck, deckClickTime, sessionId } = req.body
+  const { deck, deckClickTime, sid } = req.body
   try {
-    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sessionId])
+    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sid])
     await pool.query('UPDATE cards SET deckclicktime=$2 WHERE deck=$1 and email=$3',
       [deck, deckClickTime, val.rows[0].email])
     res.send('Updated deckclicktime successfully')
@@ -151,9 +151,9 @@ const updateTimeStamp = async (req, res) => {
 }
 
 const modifyDeckName = async (req, res) => {
-  const { reName, deckName, sessionId } = req.body
+  const { reName, deckName, sid } = req.body
   try {
-    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sessionId])
+    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sid])
     await pool.query('UPDATE cards SET deck=$1 WHERE deck=$2 and email=$3', [reName, deckName, val.rows[0].email])
     res.send('Updated deckname successfully')
   } catch (e) {
@@ -162,9 +162,9 @@ const modifyDeckName = async (req, res) => {
 }
 
 const deleteDeck = async (req, res) => {
-  const { deckName, sessionId } = req.body
+  const { deckName, sid } = req.body
   try {
-    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sessionId])
+    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sid])
     await pool.query('DELETE FROM cards WHERE deck=$1 and email=$2', [deckName, val.rows[0].email])
     res.send('Deleted deck successfully')
   } catch (e) {
@@ -173,9 +173,9 @@ const deleteDeck = async (req, res) => {
 }
 
 const updateCard = async (req, res) => {
-  const { id, deck, question, answer, sessionId } = req.body
+  const { id, deck, question, answer, sid } = req.body
   try {
-    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sessionId])
+    const val = await pool.query('SELECT email FROM authentication WHERE sid=$1', [sid])
     await pool.query('UPDATE cards SET deck=$2, question=$3, answer=$4 WHERE id=$1 and email=$5',
       [id, deck, question, answer, val.rows[0].email])
     res.send('Updated card successfully')
