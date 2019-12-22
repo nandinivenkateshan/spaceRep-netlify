@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx parcel index.html --open",
     "watch": "npx parcel watch index.html",
-    "build": "npx parcel build index.html --no-content-hash --no-source-maps"
+    "build": "npx parcel build index.html"
   },
   "author": "",
   "license": "MIT",
