@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Form from '../addcard/Form'
+import Form from '../addcard/AddCardForm'
 import NavBar from '../navbar/Navbar'
 import { useParams } from 'react-router-dom'
-import url from '../../Config'
+import url from '../../config'
 
 function Edit () {
   const { id } = useParams()

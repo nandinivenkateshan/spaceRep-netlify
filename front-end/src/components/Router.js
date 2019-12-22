@@ -3,7 +3,6 @@ import Home from './home/Home'
 import SignUp from './sign-up/SignUp'
 import Login from './login/Login'
 import Logout from './login/Logout'
-import Navbar from './app/navbar/Navbar'
 import Decks from './app/decks/Decks'
 import Addcard from './app/addcard/Addcard'
 import Form from './app/edit/Edit'
@@ -17,7 +16,6 @@ function routes () {
         <Route exact path='/' component={Home} />
         <Route path='/signup' component={SignUp} />
         <Route path='/login' component={Login} />
-        <Route path='/loggedIn' component={Navbar} />
         <Route exact path='/decks/:id' component={StudyNow} />
         <Route path='/decks' component={Decks} />
         <Route path='/add' component={Addcard} />

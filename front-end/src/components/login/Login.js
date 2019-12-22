@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './login.css'
 import { Redirect } from 'react-router-dom'
 import Navbar from '../navbar/Nav-register'
-import url from '../Config'
+import url from '../config'
 
 function Login () {
   const [values, setValues] = useState({})
@@ -84,7 +84,7 @@ function Login () {
           )}
           <button className='login-btn'>Login</button>
           {isLogin &&
-            <Redirect to='/loggedIn' />}
+            <Redirect to='/decks' />}
         </form>
         {/* <Link className='reset-pswd' to=''>Reset Password</Link> */}
       </section>

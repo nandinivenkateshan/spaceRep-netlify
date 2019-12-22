@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import parse from 'html-react-parser'
 import NavBar from '../navbar/Navbar'
-import url from '../../Config'
+import url from '../../config'
 
 const initialState = {
   arr: [],
@@ -105,10 +105,10 @@ function StudyNow () {
     return time
   }
 
-  function handleEasyOrGood (array, e) {
+  function handleEasyOrGood (data, e) {
     const answerType = e.target.innerText.toLowerCase()
-    let { id, status, easy, good, again } = array
-    const timeToDelay = array[answerType]
+    let { id, status, easy, good, again } = data
+    const timeToDelay = data[answerType]
     const oldStatus = status
     if (oldStatus === 'new') {
       status = 'learning'

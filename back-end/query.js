@@ -123,7 +123,8 @@ const deckNames = async (req, res) => {
       res.send(result.rows)
     }
   } catch (e) {
-    console.log('error while fetching decknames')
+    throw new Error(e)
+    //console.log('error while fetching decknames')
   }
 }
 

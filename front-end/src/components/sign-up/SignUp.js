@@ -3,7 +3,7 @@ import './signUp.css'
 import useForm from './useForm'
 import validate from './SignUPFormValidation'
 import Navbar from '../navbar/Nav-register'
-import url from '../Config'
+import url from '../config'
 import { Redirect } from 'react-router-dom'
 
 function SignUp () {

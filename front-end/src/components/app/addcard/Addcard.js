@@ -1,13 +1,13 @@
 import React from 'react'
 import './addcard.css'
 import NavBar from '../navbar/Navbar'
-import Form from './Form'
+import AddCardForm from './AddCardForm'
 
 function Addcard () {
   return (
     <main>
       <NavBar />
-      <Form heading='Add Card' />
+      <AddCardForm heading='Add Card' />
     </main>
   )
 }

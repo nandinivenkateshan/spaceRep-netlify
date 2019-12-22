@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Login from './Login'
-import url from '../Config'
+import url from '../config'
 
 function Logout () {
   const sid = JSON.parse(window.localStorage.getItem('session'))

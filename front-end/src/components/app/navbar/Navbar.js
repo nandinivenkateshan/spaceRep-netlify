@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './navbar.css'
 import logo from '../../img/logo.jpeg'
 import { Link } from 'react-router-dom'
-import url from '../../Config'
+import url from '../../config'
 import Login from '../../login/Login'
 
 function Navbar () {

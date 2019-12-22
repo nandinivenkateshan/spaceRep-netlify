@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import logo from '../img/logo.jpeg'
 import './nav.css'
-import url from '../Config'
+import url from '../config'
 import { Link } from 'react-router-dom'
 
 function Navbar (props) {
@@ -27,7 +27,7 @@ function Navbar (props) {
           <Link to='/signup' className={signup}>{signup} </Link>
           {!isLoggedIn
             ? <Link to='/login' className={login}> {login}</Link>
-            : <Link to='/loggedIn' className={login}> {login}</Link>}
+            : <Link to='/decks' className={login}> {login}</Link>}
         </aside>
       </nav>
     </main>

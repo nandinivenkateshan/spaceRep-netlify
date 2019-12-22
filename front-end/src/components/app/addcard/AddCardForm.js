@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './addcard.css'
 import showdown from 'showdown'
-import url from '../../Config'
+import url from '../../config'
 import EnterDeckName from './EnterDeckName'
 import EnterQA from './EnterQA'
 import { Redirect } from 'react-router-dom'
 
-function Form (props) {
-  const { heading, id, editCard } = props
+function AddCardForm ({ heading, id, editCard }) {
   const sid = JSON.parse(window.localStorage.getItem('session'))
   let editQuestion, editDeck, editAns
   if (id) {
@@ -30,7 +29,7 @@ function Form (props) {
   setTimeout(() => setIssubmit(false), 4000)
 
   const handleDeck = e => {
-    return setDeck(e.target.value.trim())
+    return setDeck(e.target.value)
   }
 
   const handleQuestion = e => {
@@ -107,17 +106,14 @@ function Form (props) {
     setMarkAns(html)
   }
 
+  async function getDataFromDb () {
+    let data = await window.fetch(`${url}/decknames/?sid=${sid}`)
+    data = await data.json()
+    setDecksForOpt(data)
+  }
+
   useEffect(() => {
-    const abortController = new window.AbortController()
-    async function getDataFromDb () {
-      let data = await window.fetch(`${url}/decknames/?sid=${sid}`, { signal: abortController.signal })
-      data = await data.json()
-      setDecksForOpt(data)
-    }
     getDataFromDb()
-    return () => {
-      abortController.abort()
-    }
   }, [isSubmit])
 
   return (
@@ -137,10 +133,12 @@ function Form (props) {
           onHandleAnswer={e => handleAnswer(e)}
           onHandleAnswerBlur={() => handleAnswerBlur()}
         />
-        {!id &&
-          <button className='save-btn'>Save</button>}
+        {/* {!id &&
+          <button className='save-btn'>Save</button>} */}
         {id &&
-          <button className='save-btn'>Update</button>}
+          <button className='save-btn'>Update</button> ||
+            <button className='save-btn'>Save</button>}
+          }
         {isSubmit &&
           <p className='isSubmit-para'>Added Successfully</p>}
         {isUpdate && <Redirect to='/decks' />}
@@ -149,4 +147,4 @@ function Form (props) {
   )
 }
 
-export default Form
+export default AddCardForm
