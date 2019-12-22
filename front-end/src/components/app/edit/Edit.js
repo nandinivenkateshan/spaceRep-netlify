@@ -9,13 +9,14 @@ function Edit () {
   const [editCard, setEditCard] = useState('')
   const sid = JSON.parse(window.localStorage.getItem('session'))
 
+  async function getDataFromDb () {
+    const res = await window.fetch(`${url}/cards/?sid=${sid}`)
+    const data = await res.json()
+    const card = data.filter(item => item.id === Number(id))
+    setEditCard(card)
+  }
+
   useEffect(() => {
-    async function getDataFromDb () {
-      const res = await window.fetch(`${url}/cards/?sid=${sid}`)
-      const data = await res.json()
-      const card = data.filter(item => item.id === Number(id))
-      setEditCard(card)
-    }
     getDataFromDb()
   }, [])
 

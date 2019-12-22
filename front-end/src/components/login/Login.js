@@ -5,6 +5,7 @@ import Navbar from '../navbar/Nav-register'
 import url from '../config'
 
 function Login () {
+  console.log(url)
   const [values, setValues] = useState({})
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)

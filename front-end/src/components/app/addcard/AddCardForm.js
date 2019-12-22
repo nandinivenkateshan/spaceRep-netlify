@@ -8,12 +8,15 @@ import { Redirect } from 'react-router-dom'
 
 function AddCardForm ({ heading, id, editCard }) {
   const sid = JSON.parse(window.localStorage.getItem('session'))
-  let editQuestion, editDeck, editAns
+  let editQuestion, editDeck, editAns, saveBtn, updateBtn
   if (id) {
     const converter = new showdown.Converter()
     editDeck = editCard[0].deck
     editQuestion = converter.makeMarkdown(editCard[0].question)
     editAns = converter.makeMarkdown(editCard[0].answer)
+    updateBtn = <button className='save-btn'>Update</button>
+  } else {
+    saveBtn = <button className='save-btn'>Save</button>
   }
 
   const [isSubmit, setIssubmit] = useState(false)
@@ -133,10 +136,7 @@ function AddCardForm ({ heading, id, editCard }) {
           onHandleAnswer={e => handleAnswer(e)}
           onHandleAnswerBlur={() => handleAnswerBlur()}
         />
-        {!id &&
-          <button className='save-btn'>Save</button>}
-        {id &&
-          <button className='save-btn'>Update</button>}
+        {saveBtn || updateBtn}
         {isSubmit &&
           <p className='isSubmit-para'>Added Successfully</p>}
         {isUpdate && <Redirect to='/decks' />}

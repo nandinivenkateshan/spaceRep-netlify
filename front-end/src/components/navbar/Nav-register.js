@@ -4,10 +4,9 @@ import './nav.css'
 import url from '../config'
 import { Link } from 'react-router-dom'
 
-function Navbar (props) {
+function Navbar ({ signup, login }) {
   const [isLoggedIn, setIsLogged] = useState(false)
   const sid = JSON.parse(window.localStorage.getItem('session'))
-  const { signup, login } = props
   useEffect(() => {
     async function getDataFromDb () {
       let data = await window.fetch(`${url}/account/?sid=${sid}`)

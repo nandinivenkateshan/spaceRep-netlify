@@ -1,8 +1,9 @@
 import React, { useEffect, useReducer } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
-import parse from 'html-react-parser'
 import NavBar from '../navbar/Navbar'
 import url from '../../config'
+import ShowQues from './ShowQues'
+import ShowAnswer from './ShowAnswer'
 
 const initialState = {
   arr: [],
@@ -47,7 +48,7 @@ function reducer (state, action) {
 function StudyNow () {
   const [state, dispatch] = useReducer(reducer, initialState)
   const { id: deckName } = useParams()
-  let answerDiv, studyDiv, questionDiv, congratsMsg
+  let studyDiv, congratsMsg
   const sid = JSON.parse(window.localStorage.getItem('session'))
 
   useEffect(() => {
@@ -69,18 +70,6 @@ function StudyNow () {
     getDataFromDb()
   }, [])
 
-  async function modifyTimeStamp (url, data) {
-    const value = { ...data, sid }
-    await window.fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(value),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    )
-  }
-
   function handleStudy () {
     dispatch({ type: 'study' })
   }
@@ -89,60 +78,12 @@ function StudyNow () {
     dispatch({ type: 'question' })
   }
 
-  function ConvertSec (n) {
-    const time = []
-    const day = parseInt(n / (24 * 3600))
-    if (day) time.push(` ${day} d`)
-    n = (n % (24 * 3600))
-    const hour = parseInt(n / 3600)
-    if (hour) time.push(` ${hour} hour`)
-    n = parseInt(n % 3600)
-    const min = parseInt(n / 60)
-    if (min) time.push(` ${min} min`)
-    n = parseInt(n % 60)
-    const sec = n
-    if (sec) time.push(sec + 'sec')
-    return time
+  function handleAgain (card) {
+    dispatch(card)
   }
 
-  function handleEasyOrGood (data, e) {
-    const answerType = e.target.innerText.toLowerCase()
-    let { id, status, easy, good, again } = data
-    const timeToDelay = data[answerType]
-    const oldStatus = status
-    if (oldStatus === 'new') {
-      status = 'learning'
-      easy = 86400 // 1 day
-      good = 259200 // 3 days
-    }
-    if (oldStatus === 'learning') {
-      status = 'review'
-      easy = 172800 // 2 days
-      good = 345600 // 4 days
-    }
-    if (oldStatus === 'review') {
-      easy = Number(easy) + 172800
-      good = Number(good) + 345600
-    }
-
-    const timeStamp = parseInt(Date.now() / 1000) + Number(timeToDelay)
-    modifyTimeStamp(`${url}/updateTimeStamp`,
-      { id, easy, good, again, timeStamp, status }
-    )
-    dispatch({ type: `${answerType}Answer`, newArr: state.arr.slice(1) })
-  }
-
-  function handleAgain (array) {
-    let { id, status, again, easy, good } = array
-    status = 'learning'
-    easy = 86400 // 1 day
-    good = 259200 // 3 day
-
-    const timeStamp = parseInt(Date.now() / 1000)
-    modifyTimeStamp(`${url}/updateTimeStamp`,
-      { id, again, easy, good, timeStamp, status }
-    )
-    dispatch({ type: 'againAnswer', newArr: [...state.arr.slice(1), state.arr[0]] })
+  function handleEasyOrGood (card) {
+    dispatch(card)
   }
 
   if (state.showStudy) {
@@ -171,43 +112,6 @@ function StudyNow () {
     dispatch({ type: 'edit', editId: id })
   }
 
-  if (state.showQuestion && state.arr.length) {
-    questionDiv = (
-      <section>
-        <div className='showQuestion-box'>
-          <div className='showQuestion'>
-            {parse(state.arr[0].question)}
-          </div>
-          <button onClick={() => handleQuestion()} className='study-btn'>Show Answer</button>
-        </div>
-        <button className='edit-btn' onClick={() => handleEdit(state.arr[0].id)}>Edit</button>
-      </section>
-    )
-  }
-
-  if (state.showAnswer && state.arr.length) {
-    answerDiv = (
-      <section>
-        <div className='showAnswer-box'>
-          <div className='showAnswer'>
-            {parse(state.arr[0].answer)}
-          </div>
-          <div className='timings'>
-            <label>&lt; {ConvertSec(state.arr[0].again)}</label>
-            <label>  {ConvertSec(state.arr[0].easy)}</label>
-            <label>{ConvertSec(state.arr[0].good)}</label>
-          </div>
-          <div className='answer-btns'>
-            <button onClick={() => handleAgain(state.arr[0])} className='btn'>Again</button>
-            <button onClick={(e) => handleEasyOrGood(state.arr[0], e)} className='btn'>Easy</button>
-            <button onClick={(e) => handleEasyOrGood(state.arr[0], e)} className='btn'>Good</button>
-          </div>
-        </div>
-        <button className='edit-btn' onClick={() => handleEdit(state.arr[0].id)}>Edit</button>
-      </section>
-    )
-  }
-
   if (!state.arr.length) {
     congratsMsg = <p className='congrats-msg'>Congratulations ! You have finished this deck for now</p>
   }
@@ -215,9 +119,26 @@ function StudyNow () {
   return (
     <main className='main'>
       <NavBar />
+      {studyDiv || congratsMsg}
       {state.edit &&
         <Redirect to={`/edit/${state.editId}`} />}
-      {studyDiv || answerDiv || questionDiv || congratsMsg}
+
+      {state.showQuestion && state.arr.length &&
+        <ShowQues
+          question={state.arr[0].question}
+          id={state.arr[0].id}
+          onQuestion={() => handleQuestion()}
+          onEdit={id => handleEdit(id)}
+        />}
+
+      {state.showAnswer && state.arr.length &&
+        <ShowAnswer
+          cards={state.arr}
+          onAgainAns={card => handleAgain(card)}
+          onEasyOrGood={card => handleEasyOrGood(card)}
+          onEdit={id => handleEdit(id)}
+        />}
+
     </main>
   )
 }

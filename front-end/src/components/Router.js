@@ -3,7 +3,7 @@ import Home from './home/Home'
 import SignUp from './sign-up/SignUp'
 import Login from './login/Login'
 import Logout from './login/Logout'
-import Decks from './app/decks/Decks'
+import ShowDeckNames from './app/decks/ShowDeckNames'
 import Addcard from './app/addcard/Addcard'
 import Form from './app/edit/Edit'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -17,7 +17,7 @@ function routes () {
         <Route path='/signup' component={SignUp} />
         <Route path='/login' component={Login} />
         <Route exact path='/decks/:id' component={StudyNow} />
-        <Route path='/decks' component={Decks} />
+        <Route path='/decks' component={ShowDeckNames} />
         <Route path='/add' component={Addcard} />
         <Route exact path='/edit/:id' component={Form} />
         <Route path='/loggedout' component={Logout} />
