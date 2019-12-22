@@ -6,14 +6,11 @@
   "scripts": {
     "dev": "npx parcel index.html --open",
     "watch": "npx parcel watch index.html",
-    "build": "npx parcel build index.html"
+    "build": "npx parcel build index.html --no-content-hash --no-source-maps"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.7.6",
-    "@babel/runtime": "^7.7.7",
-    "add": "^2.0.6",
     "html-react-parser": "^0.10.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
