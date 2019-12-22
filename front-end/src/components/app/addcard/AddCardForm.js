@@ -133,12 +133,10 @@ function AddCardForm ({ heading, id, editCard }) {
           onHandleAnswer={e => handleAnswer(e)}
           onHandleAnswerBlur={() => handleAnswerBlur()}
         />
-        {/* {!id &&
-          <button className='save-btn'>Save</button>} */}
+        {!id &&
+          <button className='save-btn'>Save</button>}
         {id &&
-          <button className='save-btn'>Update</button> ||
-            <button className='save-btn'>Save</button>}
-          }
+          <button className='save-btn'>Update</button>}
         {isSubmit &&
           <p className='isSubmit-para'>Added Successfully</p>}
         {isUpdate && <Redirect to='/decks' />}
