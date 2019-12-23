@@ -2,10 +2,10 @@ import React from 'react'
 import Home from './home/Home'
 import SignUp from './sign-up/SignUp'
 import Login from './login/Login'
-import Logout from './login/Logout'
 import ShowDeckNames from './app/decks/ShowDeckNames'
 import Addcard from './app/addcard/Addcard'
 import Form from './app/edit/Edit'
+import NotFound from './NotFound'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import StudyNow from './app/decks/StudyNow'
 
@@ -14,13 +14,13 @@ function routes () {
     <Router>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/signup' component={SignUp} />
-        <Route path='/login' component={Login} />
+        <Route exact path='/signup' component={SignUp} />
+        <Route exact path='/login' component={Login} />
         <Route exact path='/decks/:id' component={StudyNow} />
-        <Route path='/decks' component={ShowDeckNames} />
-        <Route path='/add' component={Addcard} />
+        <Route exact path='/decks' component={ShowDeckNames} />
+        <Route exact path='/add' component={Addcard} />
         <Route exact path='/edit/:id' component={Form} />
-        <Route path='/loggedout' component={Logout} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   )

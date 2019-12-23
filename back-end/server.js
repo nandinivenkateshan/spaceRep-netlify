@@ -24,4 +24,5 @@ app.post('/updateCard', db.updateCard)
 app.get('/deckNames', db.deckNames)
 app.get('/logout', db.logout)
 app.get('/account', db.account)
+
 app.listen(port, () => console.log(`Server running on the port ${port}`))

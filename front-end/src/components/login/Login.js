@@ -5,7 +5,8 @@ import Navbar from '../navbar/Nav-register'
 import url from '../config'
 
 function Login () {
-  console.log(url)
+  const sid = JSON.parse(window.localStorage.getItem('session'))
+
   const [values, setValues] = useState({})
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -17,6 +18,21 @@ function Login () {
       checkUserDetails(`${url}/login`, values)
     }
   }, [errors])
+
+  async function checkUserLogout () {
+    const response = await window.fetch(`${url}/account/?sid=${sid}`)
+    const data = await response.json()
+    if (data) {
+      const response = await window.fetch(`${url}/logout/?sid=${sid}`)
+      console.log(response)
+    }
+  }
+
+  useEffect(() => {
+    if (sid) {
+      checkUserLogout()
+    }
+  }, [])
 
   const checkUserDetails = async (url, data) => {
     const res = await window.fetch(url, {

@@ -10,26 +10,28 @@ function SignUp () {
   const [status, setStatus] = useState('')
   const [resMsg, setResMsg] = useState({})
   const [userDetails, setUserDetails] = useState([])
+  const [notFound, setNotFound] = useState()
   const { handleChange, handleSubmit, values, errors } = useForm(
     login,
     validate
   )
 
-  const updateUserDetails = async (url, data) => {
-    const res = await window.fetch(url, {
+  const addUserDetails = async (url, data) => {
+    const response = await window.fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    const response = await res.json()
-    setStatus(res.ok)
-    setResMsg(response)
+    const responseStatus = await response.json()
+    console.log(response)
+    setStatus(response.ok)
+    setResMsg(responseStatus)
   }
 
   function login () {
-    updateUserDetails(`${url}/addUserDetails`, values)
+    addUserDetails(`${url}/addUserDetails`, values)
     setUserDetails([...userDetails, values])
   }
 

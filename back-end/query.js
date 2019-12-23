@@ -27,7 +27,7 @@ const addUserDetails = async (req, res) => {
   try {
     await pool.query('INSERT INTO signup (user_name, user_email, pswd) VALUES ($1,$2,$3)', [name, mail, hashedPswd])
     res.send({ success: 'Added user details successfully' })
-  } catch (error) {
+  } catch (err) {
     res.send({ error: 'Email already exist' })
   }
 }
@@ -114,17 +114,12 @@ const addCard = async (req, res) => {
 
 const deckNames = async (req, res) => {
   const sid = req.query.sid
-  try {
-    const val = await pool.query('SELECT email, action FROM authentication WHERE sid=$1', [sid])
-    const check = val.rows[0].action
-    if (check === 'true') {
-      const email = val.rows[0].email
-      const result = await pool.query('SELECT DISTINCT ON(deck) deck, id FROM cards WHERE email=$1', [email])
-      res.send(result.rows)
-    }
-  } catch (e) {
-    throw new Error(e)
-    //console.log('error while fetching decknames')
+  const val = await pool.query('SELECT email, action FROM authentication WHERE sid=$1', [sid])
+  const check = val.rows[0].action
+  if (check === 'true') {
+    const email = val.rows[0].email
+    const result = await pool.query('SELECT DISTINCT ON(deck) deck, id FROM cards WHERE email=$1', [email])
+    res.send(result.rows)
   }
 }
 

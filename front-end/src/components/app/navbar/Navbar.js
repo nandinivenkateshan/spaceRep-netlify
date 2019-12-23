@@ -34,7 +34,7 @@ function Navbar () {
 
         <div className='navbar-menu-end'>
           <Link className='navbar-item' to='/decks'>Account- {account}</Link>
-          <Link className='navbar-item' to='/loggedout'> Log Out</Link>
+          <Link className='navbar-item' to='/login'> Log Out</Link>
         </div>
       </nav>
       {/* {!account &&
