@@ -19,8 +19,6 @@ function Navbar () {
 
   return (
     <>
-      {/*
-      {account && */}
       <nav className='navbar'>
         <Link className='navbar-brand' to='/loggedIn'>
           <label className='logo-text'>SpaceRep</label>
@@ -37,9 +35,6 @@ function Navbar () {
           <Link className='navbar-item' to='/login'> Log Out</Link>
         </div>
       </nav>
-      {/* {!account &&
-        <Login />} */}
-
     </>
   )
 }

@@ -1,6 +1,6 @@
 * {
-  margin: 0px;
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -21,6 +21,7 @@
   background-color: rgb(212, 198, 198);
   padding: 0px 10px 0px 20px;
   margin-bottom: 40px;
+  /* width: auto; */
 }
 .logos {
   display: flex;

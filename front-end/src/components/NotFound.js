@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 function NotFound () {
-  const heading = styled.h1`
-    text-align: center
+  const Heading = styled.p`
+    text-align: center;
+    margin-top: 100px;
+    font-size: 30px;
 `
   return (
-    <heading>Page Not Found</heading>
+    <Heading>Page Not Found</Heading>
   )
 }
 
