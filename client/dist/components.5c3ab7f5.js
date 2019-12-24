@@ -2601,9 +2601,9 @@ if ("development" !== "production") {
 'use strict';
 
 if ("development" === 'production') {
-  module.exports = require('./cjs/react.production.min.js.js.js');
+  module.exports = require('./cjs/react.production.min.js');
 } else {
-  module.exports = require('./cjs/react.development.js.js.js');
+  module.exports = require('./cjs/react.development.js');
 }
 },{"./cjs/react.development.js":"node_modules/react/cjs/react.development.js"}],"node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
 /** @license React v0.17.0
@@ -3637,9 +3637,9 @@ if ("development" !== "production") {
 'use strict';
 
 if ("development" === 'production') {
-  module.exports = require('./cjs/scheduler.production.min.js.js.js');
+  module.exports = require('./cjs/scheduler.production.min.js');
 } else {
-  module.exports = require('./cjs/scheduler.development.js.js.js');
+  module.exports = require('./cjs/scheduler.development.js');
 }
 },{"./cjs/scheduler.development.js":"node_modules/scheduler/cjs/scheduler.development.js"}],"node_modules/scheduler/cjs/scheduler-tracing.development.js":[function(require,module,exports) {
 /** @license React v0.17.0
@@ -4049,9 +4049,9 @@ if ("development" !== "production") {
 'use strict';
 
 if ("development" === 'production') {
-  module.exports = require('./cjs/scheduler-tracing.production.min.js.js.js');
+  module.exports = require('./cjs/scheduler-tracing.production.min.js');
 } else {
-  module.exports = require('./cjs/scheduler-tracing.development.js.js.js');
+  module.exports = require('./cjs/scheduler-tracing.development.js');
 }
 },{"./cjs/scheduler-tracing.development.js":"node_modules/scheduler/cjs/scheduler-tracing.development.js"}],"node_modules/react-dom/cjs/react-dom.development.js":[function(require,module,exports) {
 /** @license React v16.11.0
@@ -31780,9 +31780,9 @@ if ("development" === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = require('./cjs/react-dom.production.min.js.js.js');
+  module.exports = require('./cjs/react-dom.production.min.js');
 } else {
-  module.exports = require('./cjs/react-dom.development.js.js.js');
+  module.exports = require('./cjs/react-dom.development.js');
 }
 },{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
@@ -32928,9 +32928,9 @@ if ("development" !== "production") {
 'use strict';
 
 if ("development" === 'production') {
-  module.exports = require('./cjs/react-is.production.min.js.js.js');
+  module.exports = require('./cjs/react-is.production.min.js');
 } else {
-  module.exports = require('./cjs/react-is.development.js.js.js');
+  module.exports = require('./cjs/react-is.development.js');
 }
 },{"./cjs/react-is.development.js":"node_modules/react-is/cjs/react-is.development.js"}],"node_modules/prop-types/factoryWithTypeCheckers.js":[function(require,module,exports) {
 /**
@@ -36657,7 +36657,7 @@ var _slicedToArray2 = require("@babel/runtime/helpers/slicedToArray");
 
 var _slicedToArray3 = (0, _interopRequireDefault2.default)(_slicedToArray2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/navbar/Nav-register.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/navbar/Nav-register.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36797,7 +36797,7 @@ var _interopRequireDefault2 = _interopRequireDefault3(require("@babel/runtime/he
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/home/Home.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/home/Home.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40272,7 +40272,7 @@ var _taggedTemplateLiteral2 = require("@babel/runtime/helpers/taggedTemplateLite
 
 var _taggedTemplateLiteral3 = (0, _interopRequireDefault2.default)(_taggedTemplateLiteral2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/NetworkError.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/NetworkError.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40334,7 +40334,7 @@ var _slicedToArray2 = require("@babel/runtime/helpers/slicedToArray");
 
 var _slicedToArray3 = (0, _interopRequireDefault2.default)(_slicedToArray2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/sign-up/SignUp.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/sign-up/SignUp.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40356,7 +40356,7 @@ var _NavRegister = require("../navbar/Nav-register");
 
 var _NavRegister2 = (0, _interopRequireDefault2.default)(_NavRegister);
 
-var _config = require("../config.js.js.js");
+var _config = require("../config.js");
 
 var _config2 = (0, _interopRequireDefault2.default)(_config);
 
@@ -40634,7 +40634,7 @@ var _slicedToArray2 = require("@babel/runtime/helpers/slicedToArray");
 
 var _slicedToArray3 = (0, _interopRequireDefault2.default)(_slicedToArray2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/login/Login.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/login/Login.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40945,7 +40945,7 @@ var _slicedToArray2 = require("@babel/runtime/helpers/slicedToArray");
 
 var _slicedToArray3 = (0, _interopRequireDefault2.default)(_slicedToArray2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/navbar/Navbar.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/navbar/Navbar.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41110,7 +41110,7 @@ var _slicedToArray2 = require("@babel/runtime/helpers/slicedToArray");
 
 var _slicedToArray3 = (0, _interopRequireDefault2.default)(_slicedToArray2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/decks/ShowDeckNames.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/decks/ShowDeckNames.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46565,7 +46565,7 @@ var _interopRequireDefault2 = _interopRequireDefault3(require("@babel/runtime/he
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/addcard/EnterDeckName.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/addcard/EnterDeckName.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46629,7 +46629,7 @@ var _interopRequireDefault2 = _interopRequireDefault3(require("@babel/runtime/he
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/addcard/EnterQA.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/addcard/EnterQA.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46702,7 +46702,7 @@ var _slicedToArray2 = require("@babel/runtime/helpers/slicedToArray");
 
 var _slicedToArray3 = (0, _interopRequireDefault2.default)(_slicedToArray2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/addcard/AddCardForm.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/addcard/AddCardForm.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47047,7 +47047,7 @@ var _interopRequireDefault2 = _interopRequireDefault3(require("@babel/runtime/he
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/addcard/Addcard.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/addcard/Addcard.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47106,7 +47106,7 @@ var _slicedToArray2 = require("@babel/runtime/helpers/slicedToArray");
 
 var _slicedToArray3 = (0, _interopRequireDefault2.default)(_slicedToArray2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/edit/Edit.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/edit/Edit.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47209,7 +47209,7 @@ var _taggedTemplateLiteral2 = require("@babel/runtime/helpers/taggedTemplateLite
 
 var _taggedTemplateLiteral3 = (0, _interopRequireDefault2.default)(_taggedTemplateLiteral2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/NotFound.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/NotFound.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48947,7 +48947,7 @@ var _interopRequireDefault2 = _interopRequireDefault3(require("@babel/runtime/he
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/decks/ShowQues.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/decks/ShowQues.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49038,7 +49038,7 @@ var _defineProperty2 = require("@babel/runtime/helpers/defineProperty");
 
 var _defineProperty3 = (0, _interopRequireDefault2.default)(_defineProperty2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/decks/ShowAnswer.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/decks/ShowAnswer.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49302,7 +49302,7 @@ var _defineProperty2 = require("@babel/runtime/helpers/defineProperty");
 
 var _defineProperty3 = (0, _interopRequireDefault2.default)(_defineProperty2);
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/app/decks/StudyNow.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/app/decks/StudyNow.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49662,7 +49662,7 @@ var _interopRequireDefault2 = _interopRequireDefault3(require("@babel/runtime/he
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/Router.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/Router.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49796,7 +49796,7 @@ exports.default = routes;
 
 var _interopRequireDefault2 = _interopRequireDefault3(require("@babel/runtime/helpers/interopRequireDefault"));
 
-var _jsxFileName = "/home/admi/work/spaceRep-netlify/front-end/src/components/index.js";
+var _jsxFileName = "/home/admi/work/spaceRep-netlify/client/src/components/index.js";
 
 function _interopRequireDefault3(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49808,7 +49808,7 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = (0, _interopRequireDefault2.default)(_reactDom);
 
-var _Router = require("./Router.js.js.js");
+var _Router = require("./Router.js");
 
 var _Router2 = (0, _interopRequireDefault2.default)(_Router);
 
@@ -49847,7 +49847,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40037" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41097" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
