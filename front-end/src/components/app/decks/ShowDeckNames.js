@@ -10,7 +10,7 @@ function Decks () {
   const [path, setPath] = useState('')
   const [isAction, setAction] = useState(false)
   const sid = JSON.parse(window.localStorage.getItem('session'))
-
+  console.log('sid', sid)
   async function getDataFromDb () {
     let data = await window.fetch(`${url}/deckNames/?sid=${sid}`)
     data = await data.json()
@@ -24,6 +24,7 @@ function Decks () {
 
   const modifyDeckClickTime = async (url, data) => {
     const value = { ...data, sid }
+    console.log(value)
     const res = await window.fetch(url, {
       method: 'POST',
       body: JSON.stringify(value),
